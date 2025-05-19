@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>just click</title>
+  <title>Just Click</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -23,17 +23,29 @@
   </style>
 </head>
 <body>
-  <h1>just click</h1>
-  <button onclick="addClick()">click</button>
-  <div id="counter">clicks: 0</div>
+  <h1>Just Click</h1>
+  <button onclick="addClick()">Click</button>
+  <div id="counter">Clicks: 0</div>
 
   <script>
-    let licznik = 0;
+    // Get stored counter value from localStorage
+    let counter = localStorage.getItem("clicks");
+    if (counter === null) {
+      counter = 0;
+    } else {
+      counter = parseInt(counter);
+    }
+
+    // Show initial value
+    document.getElementById("counter").innerText = "Clicks: " + counter;
 
     function addClick() {
-      licznik++;
-      document.getElementById("counter").innerText = "clicks: " + licznik;
+      counter++;
+      document.getElementById("counter").innerText = "Clicks: " + counter;
+      localStorage.setItem("clicks", counter);
     }
   </script>
 </body>
+</html>
+
 </html>
